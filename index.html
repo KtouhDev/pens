@@ -99,7 +99,7 @@
     <audio id="pigSong" src="Pig.mp3"></audio>
 
     <script>
-        // Загрузка количества монет из localStorage
+
         let coinCount = parseInt(localStorage.getItem('chalenCoins') || '0');
         document.getElementById('coinCounter').innerHTML = 
             `${coinCount} <img id="coinIcon" src="Chh.png" alt="Chalen Coin">`;
@@ -110,7 +110,7 @@
 
         function addChalenCoin() {
             coinCount++;
-            // Сохранение монет в localStorage
+
             localStorage.setItem('chalenCoins', coinCount);
             document.getElementById('coinCounter').innerHTML = 
                 `${coinCount} <img id="coinIcon" src="Chh.png" alt="Chalen Coin">`;
