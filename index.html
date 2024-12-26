@@ -89,6 +89,21 @@
             }
         }
 
+          .doxbinInfo {
+            background: rgba(255,69,0,0.7);
+            color: black;
+            padding: 15px;
+            border-radius: 10px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 300px;
+            text-align: center;
+            z-index: 1000;
+            display: none;
+        }
+
 
     </style>
 </head>
@@ -103,13 +118,28 @@
         <button class="button" onclick="playChay()">Chay postavte</button>
         <button class="button" onclick="addChalenCoin()">ChalenCoins</button>
         <button class="button" onclick="playVanya()">Vanya</button>
+        <button class="button" onclick="showDoxbinInfo()">Doxink</button>
+        <button class="button" onclick="playSigmaaaa()">Sigmaaaaaaxaxaxaxaxaxxaaxxa</button>
+    </div>
+
+    <div id="doxbinInfoPopup" class="doxbinInfo">
+
+        1. Ваня<br>
+
+        2. Сосалов<br>
+
+        3. 52 года<br>
+
+        4. живет в дубае<br>
+        айпи: 52:52:52 52<br>
+        хпххпхахахахаххахах лол
     </div>
 
     <audio id="sigmaSong" src="sigma.mp3"></audio>
     <audio id="pigSong" src="Pig.mp3"></audio>
+    <audio id="figseksSong" src="Figseks.mp3"></audio>
 
     <script>
-
         let coinCount = parseInt(localStorage.getItem('chalenCoins') || '0');
         document.getElementById('coinCounter').innerHTML = 
             `${coinCount} <img id="coinIcon" src="Chh.png" alt="Chalen Coin">`;
@@ -120,7 +150,6 @@
 
         function addChalenCoin() {
             coinCount++;
-
             localStorage.setItem('chalenCoins', coinCount);
             document.getElementById('coinCounter').innerHTML = 
                 `${coinCount} <img id="coinIcon" src="Chh.png" alt="Chalen Coin">`;
@@ -128,6 +157,15 @@
 
         function playVanya() {
             document.getElementById('pigSong').play();
+        }
+
+        function showDoxbinInfo() {
+            const popup = document.getElementById('doxbinInfoPopup');
+            popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function playSigmaaaa() {
+            document.getElementById('figseksSong').play();
         }
     </script>
 </body>
