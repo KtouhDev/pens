@@ -78,6 +78,7 @@
             height: 30px;
             margin-left: 10px;
             filter: drop-shadow(0 0 5px #FF4500);
+            cursor: pointer;
         }
 
         @media (max-width: 600px) {
@@ -89,7 +90,7 @@
             }
         }
 
-          .doxbinInfo {
+        .doxbinInfo {
             background: rgba(255,69,0,0.7);
             color: black;
             padding: 15px;
@@ -103,8 +104,6 @@
             z-index: 1000;
             display: none;
         }
-
-
     </style>
 </head>
 <body>
@@ -141,8 +140,28 @@
 
     <script>
         let coinCount = parseInt(localStorage.getItem('chalenCoins') || '0');
-        document.getElementById('coinCounter').innerHTML = 
-            `${coinCount} <img id="coinIcon" src="Chh.png" alt="Chalen Coin">`;
+        let clickCount = 0;
+
+        function updateCoinCounter() {
+            document.getElementById('coinCounter').innerHTML = 
+                `${coinCount} <img id="coinIcon" src="Chh.png" alt="Chalen Coin">`;
+
+            // Добавляем обработчик клика на иконку монеты
+            document.getElementById('coinIcon').addEventListener('click', function() {
+                clickCount++;
+
+                if (clickCount >= 5) {
+                    coinCount = 0;
+                    localStorage.setItem('chalenCoins', coinCount);
+                    clickCount = 0;
+
+                    updateCoinCounter();
+                }
+            });
+        }
+
+        // Инициализируем счетчик при загрузке страницы
+        updateCoinCounter();
 
         function playChay() {
             document.getElementById('sigmaSong').play();
@@ -151,8 +170,7 @@
         function addChalenCoin() {
             coinCount++;
             localStorage.setItem('chalenCoins', coinCount);
-            document.getElementById('coinCounter').innerHTML = 
-                `${coinCount} <img id="coinIcon" src="Chh.png" alt="Chalen Coin">`;
+            updateCoinCounter();
         }
 
         function playVanya() {
@@ -170,3 +188,4 @@
     </script>
 </body>
 </html>
+
